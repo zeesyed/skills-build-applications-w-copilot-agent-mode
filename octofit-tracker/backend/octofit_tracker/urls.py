@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
+from django.http import JsonResponse
 from . import views
 
 router = DefaultRouter()
@@ -27,7 +28,8 @@ router.register(r'leaderboards', views.LeaderboardViewSet, basename='leaderboard
 router.register(r'workouts', views.WorkoutViewSet, basename='workout')
 
 urlpatterns = [
-    path('', include(router.urls)),
-    path('api-root/', views.api_root, name='api-root'),
+    path('', lambda request: JsonResponse({"message": "Welcome to the OctoFit Tracker API!"})),
+    path('api/', include(router.urls)),
+    path('api/api-root/', views.api_root, name='api-root'),
     path('admin/', admin.site.urls),
 ]
