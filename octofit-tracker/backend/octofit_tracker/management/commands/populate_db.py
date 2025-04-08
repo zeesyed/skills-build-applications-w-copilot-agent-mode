@@ -141,7 +141,7 @@ class Command(BaseCommand):
                 ),
                 Workout(
                     name='Swimming Training',
-                    description='Training for a swimming competition',
+                    description='Training for an olympic swimming competition',
                     duration=75,
                     calories_burned=375.0
                 ),
